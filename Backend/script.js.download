@@ -1,0 +1,15 @@
+$('.answer').each(function() {
+    $(this).data('height', $(this).height());
+    $(this).css('height', 0)
+})
+$('.question, .plus').click(function() {
+    var quest = $(this).parents('.quest');
+    if (quest.hasClass('active')) {
+        $(this).parents('.quest').find('.answer').css('height', 0);
+        quest.removeClass('active');
+    } else {
+        var height = quest.find('.answer').data('height');
+        $(this).parents('.quest').find('.answer').css('height', height);
+        quest.addClass('active');
+    }
+});
